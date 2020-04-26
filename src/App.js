@@ -1,24 +1,15 @@
 import React from 'react';
-import logo from './logo.svg';
+import {FlagPicker} from "./flagPicker"
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h2>Flag Picker</h2>
+      <div>This App will help you to learn flags around the world in 3 steps</div>
+      <React.Fragment>
+        <FlagPicker/>
+      </React.Fragment>
     </div>
   );
 }
