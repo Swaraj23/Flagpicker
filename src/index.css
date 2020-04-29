@@ -21,4 +21,6 @@ ul li {
 .container > div{
   display: inline-block;
   width: 30%;
+  vertical-align: top;
+  padding: 10px;
 }

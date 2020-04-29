@@ -2,8 +2,6 @@ import React, { useState, useMemo } from "react"
 import {SingleSelect} from "./components/dropdown"
 import Data from "./data/continents.json"
 
-
-
 function FlagPickerContainer(){
     let [data, setData] = useState({});
     let [continent , setContinent] = useState("");
@@ -23,9 +21,6 @@ function FlagPickerContainer(){
 
     const dispenseCallback = useMemo(()=> getContinentList(Data),[]);
     
-    // useEffect(()=>{
-    //     setData(Data);
-    // }, []);
     const continentValues =(values) => {
         setContinent(values);
         const contryData = data[values].map((item) =>(
@@ -99,6 +94,5 @@ function FlagPickerContainer(){
             </div>
         </div>
     )
-    
 }
-export const FlagPicker = FlagPickerContainer
+export const FlagPicker = FlagPickerContainer;
