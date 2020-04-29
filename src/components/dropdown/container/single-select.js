@@ -4,21 +4,13 @@ import "../dropdown.css"
 
 function SingleSelectFunction({options,defaultMessage,multi,continentAction}){
     const [ displayList, listEnabed ] = useState(false);
-    const [selectValues, getValues] = useState([])
-
-    const filterValues =() => {
-
-    }
 
     const selectOption =(value) => {
-        if(!multi){
-            getValues([value]);
-            continentAction(value)
-        }
+            continentAction(value);
     }
 
     const list = options.map((item,index) => (
-        <li key={index} onClick={()=>filterValues(item)}>
+        <li key={index}>
             <div onClick = {() => selectOption(item)}>
             {!multi ? 
                 <input type="radio" name="continent" value={item} />
@@ -30,11 +22,10 @@ function SingleSelectFunction({options,defaultMessage,multi,continentAction}){
             
         </li>
     ))
-        // console.log("displayList",displayList)
     return(
         <div>
             <div onClick = {() => listEnabed(!displayList)}>{defaultMessage}</div>
-            {displayList &&
+            {(displayList || multi) &&
                 <ul>
                     {list}
                 </ul>
