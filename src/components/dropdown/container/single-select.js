@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 
-import "../dropdown.css"
+import "../dropdown.css";
 
-function SingleSelectFunction({options,defaultMessage,multi,continentAction}){
+function SingleSelectFunction({options,defaultMessage,multi,continentAction , selectedValues}){
     const [ displayList, listEnabed ] = useState(false);
     const [ dropList, setDropList] = useState([]);
     useEffect(()=>{
@@ -20,14 +20,14 @@ function SingleSelectFunction({options,defaultMessage,multi,continentAction}){
         <li key={index} onClick = {() => selectOption(item)}>
             {!multi ? 
                 <input type="radio" name="continent" value={item} />
-                : <input type="checkbox" name="continent" />
+                : <input type="checkbox" name="continent" checked ={selectedValues.includes(item)} />
             }
             {item}
         </li>
     ))
     
     return(
-        <div>
+        <div className= "selectDropdown">
             <div onClick = {() => listEnabed(!displayList)}>
                 <input type= "text" placeholder = {defaultMessage} onChange = {(e)=> dropSearch(e)} />
             </div>

@@ -53,7 +53,7 @@ function FlagPickerContainer(){
     }
 
     const clearFlags = () => {
-        getSelectedCountry([]);
+        getSelectedCountry([])
         setFlags([]);
     }
 
@@ -77,6 +77,7 @@ function FlagPickerContainer(){
                         multi
                         options = {countryList}
                         continentAction = {(e) => getCountrySelected(e)}
+                        selectedValues={selectedCountry}
                     />
                 </div>
             }
