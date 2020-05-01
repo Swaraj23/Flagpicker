@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import "../dropdown.css";
 
 function SingleSelectFunction({options,defaultMessage,multi,continentAction , selectedValues}){
-    const [ displayList, listEnabed ] = useState(false);
     const [ dropList, setDropList] = useState([]);
     useEffect(()=>{
         setDropList(options)
@@ -19,23 +18,21 @@ function SingleSelectFunction({options,defaultMessage,multi,continentAction , se
     const list = dropList.map((item,index) => (
         <li key={index} onClick = {() => selectOption(item)}>
             {!multi ? 
-                <input type="radio" name="continent" value={item} />
-                : <input type="checkbox" name="continent" checked ={selectedValues.includes(item)} />
+                <input type="radio" id={item+"_"+index} name="continent" value={item} />
+                : <input id={item+"_"+index} type="checkbox" name="continent" defaultChecked ={selectedValues.includes(item)} />
             }
-            {item}
+            <label htmlFor={item+"_"+index}>{item}</label>
         </li>
     ))
     
     return(
         <div className= "selectDropdown">
-            <div onClick = {() => listEnabed(!displayList)}>
+            <div>
                 <input type= "text" placeholder = {defaultMessage} onChange = {(e)=> dropSearch(e)} />
             </div>
-            {(displayList || multi) &&
-                <ul>
-                    {list}
-                </ul>
-            }
+            <ul>
+                {list}
+            </ul>
         </div>
     );
 } 
